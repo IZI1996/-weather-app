@@ -1,0 +1,14 @@
+/* Centering the container */
+body, html {
+  margin: 0;
+  height: 100%; /* Full height of the viewport */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+}
+
+.container {
+  width: 400px; /* Set a fixed width for the card */
+  height: 80vh; /* Set a fixed height for the card */
+  background-color: #9d91f5; /* Just to see the card */
+}
