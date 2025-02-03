@@ -1,10 +1,10 @@
 import './App.css';
-import Display from './compenents/Display';
-function App() {
-  return (<>
- <Display/> 
-  
+import Main from './compenents/Main';
 
+function App() {
+  return (
+  <>
+ <Main/> 
   </>);
 }
 
