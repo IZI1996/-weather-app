@@ -1,19 +1,18 @@
-import React from 'react';
+import React from "react";
 
 const Display = ({ data }) => {
-  if (!data) {
-    return <p>No data available.</p>; // Show this if data is null or empty
+  if (!data || !data.main) {
+    return <p>No data available. Try searching for a valid city.</p>;
   }
 
   return (
     <div className="container">
-      {/* Assuming data is an object returned from the weather API */}
-      <p>City: {data.name}</p>
-      <p>Temperature: {data.main.temp}°C</p>
-      {/* Render more weather information here */}
+      <h2>Weather Details</h2>
+      <p><strong>City:</strong> {data.name}</p>
+      <p><strong>Temperature:</strong> {data.main.temp}°C</p>
+      <p><strong>Weather:</strong> {data.weather[0].description}</p>
     </div>
   );
 };
 
 export default Display;
-

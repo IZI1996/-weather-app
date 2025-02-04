@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
-import Details from './Details'; // Child component for fetching data
-import Display from './Display'; // Child component to display the data
+import React, { useState } from "react";
+import Details from "./Details";
+import Display from "./Display";
 
 function Main() {
-  const [data, setData] = useState(null); // Store data fetched from Details
+  const [inputValue, setInputValue] = useState(""); // Holds user input
+  const [searchCity, setSearchCity] = useState(""); // Holds searched city name
+  const [data, setData] = useState(null); // Holds fetched weather data
 
-  // Function to set data from Details component
-  const handleData = (data) => {
-    setData(data); // Set the fetched data from Details
+  // Function to update `searchCity` and trigger a new API call
+  const handleSearch = () => {
+    if (inputValue.trim() !== "") {
+      setSearchCity(inputValue);
+    }
   };
 
   return (
     <div>
-      <h1>Main Page (Parent)</h1>
-      <Details onDataFetched={handleData} /> {/* Pass the function to Details */}
-      {data ? <Display data={data} /> : <p>No data available.</p>} {/* Conditionally display data */}
+      <h1>Weather App</h1>
+      <input 
+        type="text" 
+        value={inputValue} 
+        onChange={(e) => setInputValue(e.target.value)} 
+        placeholder="Enter city name"
+      />
+      <button onClick={handleSearch}>Search</button>
+
+      {/* Fetch data when `searchCity` updates */}
+      {searchCity && <Details receivedValue={searchCity} onDataFetched={setData} />}
+
+      {/* Display the weather data */}
+      <Display data={data} />
     </div>
   );
 }

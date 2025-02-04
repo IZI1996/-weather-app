@@ -4,7 +4,7 @@ import Main from './compenents/Main';
 function App() {
   return (
   <>
- <Main/> 
+ <Main /> 
   </>);
 }
 
